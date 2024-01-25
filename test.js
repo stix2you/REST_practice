@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 let students = [
     {
-        id: 1,
+        id: "1",
         name: 'Jessica Drake',
         classes: {
             biology: 95,
@@ -16,7 +16,7 @@ let students = [
         }
     },
     {
-        id: 2,
+        id: "2",
         name: 'Ben Cohen',
         classes: {
             biology: 95,
@@ -24,7 +24,7 @@ let students = [
         }
     },
     {
-        id: 3,
+        id: "3",
         name: 'Lisa Downing',
         classes: {
             biology: 95,

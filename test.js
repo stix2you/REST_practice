@@ -78,5 +78,29 @@ app.put('/students/:name/:class/:grade', (req, res) => {
     }
 });
 
+// Gets the GPA of a student, by NAME
+app.get('/students/:name/gpa', (req, res) => {
+    let student = students.find((student) => { return student.name === req.params.name });
 
+    if (student) {
+        let classesGrades = Object.values(student.classes); // Object.values() filters out object's keys and keeps the values that are returned as a new array
+        let sumOfGrades = 0;
+        classesGrades.forEach(grade => {
+            sumOfGrades = sumOfGrades + grade;
+        });
+
+        let gpa = sumOfGrades / classesGrades.length;
+        console.log(sumOfGrades);
+        console.log(classesGrades.length);
+        console.log(gpa);
+        res.status(201).send('' + gpa);
+        // res.status(201).send(gpa);
+    } else {
+        res.status(404).send('Student with the name ' + req.params.name + ' was not found.');
+    }
+});
+
+app.listen(8080, () => {
+    console.log('Your app is listening on port 8080');
+});
 

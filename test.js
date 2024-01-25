@@ -4,6 +4,8 @@ const express = require('express'),
 
 const app = express();
 
+app.use(bodyParser.json());
+
 let students = [
     {
         id: 1,

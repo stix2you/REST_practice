@@ -38,8 +38,7 @@ app.get('/students', (req, res) => {
 
 // Gets the data about ONE student, by NAME
 app.get('/students/:name', (req, res) => {
-    res.json(students.find((student) => 
-        { return student.name === req.params.name }));
+    res.json(students.find((student) => { return student.name === req.params.name }));
 });
 
 // Adds data for a new student to our list of students
@@ -58,7 +57,7 @@ app.post('/students', (req, res) => {
 
 // Deletes a student from our list, by ID
 app.delete('/students/:id', (req, res) => {
-    let student = students.find((student) => { return student.id === req.params.id});
+    let student = students.find((student) => { return student.id === req.params.id });
 
     if (student) {
         students = students.filter((obj) => { return obj.id !== req.params.id });
@@ -69,7 +68,7 @@ app.delete('/students/:id', (req, res) => {
 // Updates the "grade" of a student by student name/class name
 app.put('/students/:name/:class/:grade', (req, res) => {
     let student = students.find((student) => { return student.name === req.params.name });
-   
+
     if (student) {
         student.classes[req.params.class] = parseInt(req.params.grade);
         res.status(201).send('Student ' + req.params.name + ' was assigned a grade of ' + req.params.grade + ' in ' + req.params.class + '.');
